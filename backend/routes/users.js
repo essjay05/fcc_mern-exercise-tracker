@@ -19,12 +19,12 @@ let User = require('../models/user.model');
         const newUser = new User({username});
 
         newUser.save()
-            .then(() => res.json(`User successfully added!`))
+            .then(() => res.json(`Username ${username} successfully added!`))
             .catch( err => res.status(400).json(`Error: ${err}`));
     })
 
     // Update User
-    
+
     // Delete User
 
 // Export routes
