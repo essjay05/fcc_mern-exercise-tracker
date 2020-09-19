@@ -32,3 +32,4 @@ app.listen(PORT, () => {
     console.log( `Success! Server is running on PORT: ${PORT}` );
 })
 
+// Note: Successfully completed/created backend and routes for Users (create, read all) and Exercises (full CRUD).
