@@ -14,14 +14,21 @@ app.use(express.json());
 
 // DB Connection
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri,  {useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log(`MongoDB database connection established successfully`);
+connection.once ('open', () => {
+    console.log( `MongoDB database connection established successfully` );
 })
+
+// Import Routers
+const exercisesRouter = require('./routes/exercises');
+const usersRouter = require('./routes/users');
+
+app.use( '/exercises', exercisesRouter );
+app.use('/users', usersRouter );
 
 // Port/Server Connection
 app.listen(PORT, () => {
-    console.log(`Success! Server is running on PORT: ${PORT}`);
+    console.log( `Success! Server is running on PORT: ${PORT}` );
 })
 
