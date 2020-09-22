@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 export default class CreateExercise extends Component {
@@ -47,9 +48,9 @@ export default class CreateExercise extends Component {
         });
     }
 
-    onChangeDate(e) {
+    onChangeDate(date) {
         this.setState({
-            date: e.target.value
+            date: date
         });
     }
 
@@ -78,7 +79,8 @@ export default class CreateExercise extends Component {
                         <select ref="userInput"
                             required
                             className="form-control"
-                            value={this.onChangeUsername}>
+                            value={this.state.username}
+                            onChange={this.onChangeUsername}>
                                 {
                                     this.state.users.map(function(user) {
                                         return <option
@@ -115,6 +117,9 @@ export default class CreateExercise extends Component {
                                 onChange={this.onChangeDate}
                             />
                         </div>
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
                     </div>
                 </form>
             </div>
