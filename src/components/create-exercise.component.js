@@ -13,6 +13,16 @@ export default class CreateExercise extends Component {
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
+        this.usernameInput = null;
+
+        this.setUsernameRef = element => {
+            this.usernameInput = element;
+        }
+
+        this.focusUsernameInput = () => {
+            if (this.usernameInput) this.usernameInput.focus();
+        };
+
         this.state = {
             username: '',
             description: '',
@@ -28,6 +38,7 @@ export default class CreateExercise extends Component {
             users: ['test user'],
             username: 'test user'
         })
+        this.focusUsernameInput();
     }
 
     onChangeUsername(e) {
@@ -76,7 +87,7 @@ export default class CreateExercise extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Username: </label>
-                        <select ref="userInput"
+                        <select ref={this.setUsernameInputRef}
                             required
                             className="form-control"
                             value={this.state.username}
@@ -119,7 +130,7 @@ export default class CreateExercise extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+                        <input type="submit" value="Create Exercise Log" className="btn btn-primary" onClick={this.focusUsernameInput} />
                     </div>
                 </form>
             </div>
