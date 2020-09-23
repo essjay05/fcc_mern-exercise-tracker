@@ -38,9 +38,9 @@ export default class CreateUser extends Component {
 
         console.log(user);
 
-        this.setState{(
+        this.setState({
             username: ''
-        )}
+        });
     }
 
     render() {
