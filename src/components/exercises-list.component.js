@@ -19,7 +19,7 @@ export default class ExercisesList extends Component {
     constructor(props) {
         super(props);
 
-        this.deleteExercise = this.deleteExercise.bind(this);
+        this.deleteExercise = this.deleteExercise.bind(this)
 
         this.state = {exercises: []};
 
@@ -57,7 +57,7 @@ export default class ExercisesList extends Component {
             <div>
                 <h1>Logged Exercises</h1>
                 <table className="table">
-                    <thead>
+                    <thead className="thead-light">
                         <tr>
                             <th>Username</th>
                             <th>Description</th>

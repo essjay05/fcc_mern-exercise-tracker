@@ -14,16 +14,6 @@ export default class EditExercise extends Component {
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
-        this.usernameInput = null;
-
-        this.setUsernameRef = element => {
-            this.usernameInput = element;
-        }
-
-        this.focusUsernameInput = () => {
-            if (this.usernameInput) this.usernameInput.focus();
-        };
-
         this.state = {
             username: '',
             description: '',
@@ -47,12 +37,11 @@ export default class EditExercise extends Component {
             .catch((error) => {
                 console.log(error);
             })
-        axios.get('http://localhost:5000/users')
+        axios.get('http://localhost:5000/users/')
             .then( response => {
                 if (response.data.length > 0) {
                     this.setState({
-                        users: response.data.map(user => user.username),
-                        username: response.data[0].username
+                        users: response.data.map(user => user.username)
                     })
                 }
             })
@@ -97,15 +86,11 @@ export default class EditExercise extends Component {
 
         console.log(exercise);
 
-        axios.post('http://localhost:5000/exercises/update/:id'+this.props.match.params.id, exercise)
-            .then(res => console.log(res.data))
-            .catch((error) => {
-                console.log(error);
-            })
-
-        this.setState({
-            username: ''
-        });
+        axios.post('http://localhost:5000/exercises/update/' + this.props.match.params.id, exercise)
+        .then(res => console.log(res.data))
+        .catch((error) => {
+            console.log(error);
+        })
 
         window.location = '/';
     }
